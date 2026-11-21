@@ -1,0 +1,26 @@
+services:
+  backend:
+    image: ${DOCKER_USERNAME}/agritrend-backend:latest
+    container_name: agritrend-backend
+    restart: unless-stopped
+    env_file:
+      - /home/ubuntu/agritrend/.env
+    expose:
+      - "5000"
+    networks:
+      - agritrend-net
+
+  frontend:
+    image: ${DOCKER_USERNAME}/agritrend-frontend:latest
+    container_name: agritrend-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - agritrend-net
+
+networks:
+  agritrend-net:
+    driver: bridge

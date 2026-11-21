@@ -1,27 +1,23 @@
-# Use an official Node.js image with Python included
-FROM node:18-bullseye
+FROM node:20-bookworm-slim
 
-# Install Python and pip
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip && \
-    apt-get clean
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 \
+    python3-pip \
+    python3-venv \
+    && rm -rf /var/lib/apt/lists/*
 
-# Set the working directory
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
 WORKDIR /app
 
-# Copy package files and install Node dependencies
-COPY package*.json ./
-RUN npm install
-
-# Copy Python requirements and install Python dependencies
 COPY requirements.txt .
-RUN python3 -m pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of your backend code
+COPY package*.json ./
+RUN npm install --omit=dev --ignore-scripts
+
 COPY . .
 
-# Expose the port your Node app uses (update if needed)
 EXPOSE 5000
-
-# Start your Node server
 CMD ["node", "server.js"]

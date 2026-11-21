@@ -1,6 +1,8 @@
 node_modules
+venv
+.env
 .git
-.gitignore
-Dockerfile
-.dockerignore
+.ipynb_checkpoints
 *.ipynb
+*.stackdump
+__pycache__
