@@ -1,0 +1,25 @@
+# Dependencies & Virtual Environments
+node_modules/
+venv/
+*env/
+__pycache__/
+*.pyc
+
+# Environment Variables (Secrets)
+.env
+.env.*
+!.env.example
+
+# Build & PaaS Artifacts
+dist/
+build/
+.vercel/
+
+# Jupyter & Temp Dumps
+.ipynb_checkpoints/
+*.ipynb
+*.stackdump
+
+# OS & Editor Files
+.DS_Store
+Thumbs.db

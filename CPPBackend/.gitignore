@@ -1,0 +1,33 @@
+# Ignore virtual environment folders
+venv/
+env/
+cppbackend_env/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore environment variables
+.env
+
+# Ignore node modules
+node_modules/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# Ignore build or output folders
+dist/
+build/
+*.egg-info/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
